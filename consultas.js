@@ -69,4 +69,11 @@ const ObtenerJoyasPorFiltros = async ({ precio_max, precio_min, categoria, metal
     return inventario;
 }
 
-module.exports = {obtenerJoyas, prepararHATEOAS, ObtenerJoyasPorFiltros};
+const ObtenerJoya = async ( id ) => {
+    const consulta = 'SELECT * FROM inventario where id = $1';
+    const result = await pool.query(consulta, [id]);
+    return result;
+}
+
+
+module.exports = {obtenerJoyas, prepararHATEOAS, ObtenerJoyasPorFiltros, ObtenerJoya};
